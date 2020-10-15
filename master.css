@@ -1,0 +1,35 @@
+.map
+{
+flex: 55%;
+height: 98vh;
+width: 600px;
+min-width: 50vw;
+/*Sets the height to be 92 viewport units so that it would fill the entire screen */
+
+background-image: url(https://picsum.photos/1000/1100?image=1022);
+object-fit: contain;
+padding-right: 5px;
+}
+.rowcustom {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10px;
+    align-items: center;
+
+}
+.img-flex
+{
+  justify-content: center;
+  padding-left: 5px;
+  flex:40%;
+}
+.church-img
+{
+  margin-top: 8px;
+  display: block;
+  width: 90%;
+  min-width:100px;
+  max-width: 350px; /*actual image width*/
+  height: auto; /* maintain aspect ratio*/
+  margin: auto; /*optional centering of image*/
+}
