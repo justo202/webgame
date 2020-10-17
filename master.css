@@ -1,14 +1,23 @@
 .map
 {
-flex: 55%;
+  flex: 65%;
+  /*Sets the height to be 98 viewport units so that it would fill the entire screen */
 height: 98vh;
-width: 600px;
 min-width: 50vw;
-/*Sets the height to be 92 viewport units so that it would fill the entire screen */
 
-background-image: url(https://picsum.photos/1000/1100?image=1022);
+
+background-image: url("img/1200+px.png");
+background-repeat: no-repeat;
+background-size:  cover;
 object-fit: contain;
 padding-right: 5px;
+}
+@media only screen and (max-width: 1028px) {
+
+  .map
+  {
+    background-image: url("img/600px.png");
+  }
 }
 .rowcustom {
   display: flex;
@@ -21,7 +30,7 @@ padding-right: 5px;
 {
   justify-content: center;
   padding-left: 5px;
-  flex:40%;
+  flex:35%;
 }
 .church-img
 {
@@ -32,4 +41,6 @@ padding-right: 5px;
   max-width: 350px; /*actual image width*/
   height: auto; /* maintain aspect ratio*/
   margin: auto; /*optional centering of image*/
+  cursor: move;
+  position: absolute;
 }
