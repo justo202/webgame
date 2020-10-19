@@ -23,12 +23,13 @@ padding-right: 5px;
   display: flex;
   flex-wrap: wrap;
   padding: 10px 10px;
-    align-items: center;
+
 
 }
 .img-flex
 {
   justify-content: center;
+  align-items: center;
   padding-left: 5px;
   flex:35%;
 }
@@ -36,9 +37,12 @@ padding-right: 5px;
 {
   margin-top: 8px;
   display: block;
-  width: 90%;
+  visibility:hidden;
+  width:80%;
+  left:68%;
+  top:30%;
   min-width:100px;
-  max-width: 350px; /*actual image width*/
+  max-width: 400px; /*actual image width*/
   height: auto; /* maintain aspect ratio*/
   margin: auto; /*optional centering of image*/
   cursor: move;
