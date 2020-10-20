@@ -1,6 +1,6 @@
 .map
 {
-  flex: 65%;
+  flex: 60%;
   /*Sets the height to be 98 viewport units so that it would fill the entire screen */
 height: 98vh;
 min-width: 50vw;
@@ -8,17 +8,11 @@ min-width: 50vw;
 
 background-image: url("img/1200+px.png");
 background-repeat: no-repeat;
-background-size:  cover;
+background-size:  contain;
 object-fit: contain;
 padding-right: 5px;
 }
-@media only screen and (max-width: 1028px) {
 
-  .map
-  {
-    background-image: url("img/600px.png");
-  }
-}
 .rowcustom {
   display: flex;
   flex-wrap: wrap;
@@ -31,20 +25,77 @@ padding-right: 5px;
   justify-content: center;
   align-items: center;
   padding-left: 5px;
-  flex:35%;
+  flex:40%;
 }
 .church-img
 {
-  margin-top: 8px;
+
   display: block;
   visibility:hidden;
-  width:80%;
-  left:68%;
+
+  left:60%;
   top:30%;
   min-width:100px;
-  max-width: 400px; /*actual image width*/
+  max-width: 500px; /*actual image width*/
   height: auto; /* maintain aspect ratio*/
   margin: auto; /*optional centering of image*/
   cursor: move;
   position: absolute;
+}
+.destination
+{
+position: fixed;
+width: 70px;
+height: 70px;
+
+}
+
+@media only screen and (max-width: 1028px) {
+
+  .map
+  {
+    background-image: url("img/600px.png");
+    flex:60%;
+  }
+  .img-flex
+  {
+    flex:40%;
+  }
+  .church-img
+  {
+    max-width: 150px;
+    left:65%;
+  }
+}
+@media only screen and (max-width: 1350px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    max-width: 200px;
+    left: 80%;
+  }
+  .img-flex
+  {
+    flex:20%;
+  }
+  .map
+  {
+    flex:80%;
+  }
+}
+@media only screen and (max-width: 1500px) {
+
+  .church-img
+  {
+    max-width: 300px;
+    left: 68%;
+  }
+  .img-flex
+  {
+    flex:32%;
+  }
+  .map
+  {
+    flex:68%;
+  }
 }
