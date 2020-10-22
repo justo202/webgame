@@ -9,16 +9,16 @@ var destinations = document.getElementsByClassName("destination");
 
 
 
-  var random = Math.floor(Math.random() * 3);
-  dragElement(images[random],random);
+  var random = Math.floor(Math.random() * 23); //generates random number
+  dragElement(images[random],random); //starts the function
 
 
 
 function dragElement(elmnt,index) {
-  elmnt.style.visibility = "visible";
+  elmnt.style.visibility = "visible"; //makes element vissible
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   var startposx, startposy;
-  var move = true;
+  var move = true; //allows it to move
 var destinationx = destinations[index].getBoundingClientRect();
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
@@ -33,8 +33,8 @@ var destinationx = destinations[index].getBoundingClientRect();
   }
   function reduceSize(element)
   {
-    element.style.width = "100px";
-    element.style.height = "100px";
+    element.style.width = "45px";
+    element.style.height = "auto";
   }
   function dragMouseDown(e) {
     if(move)
@@ -84,12 +84,12 @@ var destinationx = destinations[index].getBoundingClientRect();
       elmnt.style.top = destinationx.top+"px";
       elmnt.style.left = destinationx.left+"px";
       done++;
-      if(done < 3)
+      if(done < 23)
       {
-        var random = Math.floor(Math.random() * 3);
+        var random = Math.floor(Math.random() * 23);
         while(images[random].style.visibility == "visible")
         {
-          random = Math.floor(Math.random() * 3);
+          random = Math.floor(Math.random() * 23);
 
         }
         dragElement(images[random],random);

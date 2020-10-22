@@ -1,11 +1,11 @@
 .map
 {
-  flex: 60%;
+  /*flex: 60%;*/
   /*Sets the height to be 98 viewport units so that it would fill the entire screen */
-height: 98vh;
-min-width: 50vw;
+height: 910px;
+width: 1270px;
 
-
+display: block;
 background-image: url("img/1200+px.png");
 background-repeat: no-repeat;
 background-size:  contain;
@@ -14,7 +14,7 @@ padding-right: 5px;
 }
 
 .rowcustom {
-  display: flex;
+  display: inline-block;
   flex-wrap: wrap;
   padding: 10px 10px;
 
@@ -25,7 +25,7 @@ padding-right: 5px;
   justify-content: center;
   align-items: center;
   padding-left: 5px;
-  flex:40%;
+  /*flex:40%;*/
 }
 .church-img
 {
@@ -33,21 +33,26 @@ padding-right: 5px;
   display: block;
   visibility:hidden;
 
-  left:60%;
+  left:65%;
   top:30%;
-  min-width:100px;
+
   max-width: 500px; /*actual image width*/
-  height: auto; /* maintain aspect ratio*/
+  height: auto;
   margin: auto; /*optional centering of image*/
   cursor: move;
   position: absolute;
 }
 .destination
 {
-position: fixed;
-width: 70px;
-height: 70px;
+position: absolute;
+width: 30px;
+height: 40px;
 
+
+}
+.destination:hover {
+-webkit-filter: saturate(4);
+-webkit-filter: contrast(180%);
 }
 
 @media only screen and (max-width: 1028px) {
