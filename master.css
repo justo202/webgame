@@ -1,38 +1,75 @@
+body
+{
+  background-color: #7FE57F;
+  margin: 0;
+  height: 100%;
+}
+.top
+{
+
+  position:fixed;
+   width:100%;
+   height:100%;
+   top:0px;
+   left:0px;
+   z-index:1000;
+  background-color:black;
+  width:100%;
+  height:100%;
+  opacity: 0.9;
+
+}
 .map
 {
-  /*flex: 60%;*/
+  /*flex: 60%; 1270 */
   /*Sets the height to be 98 viewport units so that it would fill the entire screen */
-height: 910px;
+height: 905px;
 width: 1270px;
-
 display: block;
 background-image: url("img/1200+px.png");
 background-repeat: no-repeat;
 background-size:  contain;
 object-fit: contain;
 padding-right: 5px;
+
 }
 
 .rowcustom {
-  display: inline-block;
-  flex-wrap: wrap;
-  padding: 10px 10px;
+
+  padding-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 
 
 }
-.img-flex
+#imgheader
 {
-  justify-content: center;
-  align-items: center;
-  padding-left: 5px;
-  /*flex:40%;*/
+  display: block;
+  position: absolute;
+  left:65%;
+  top:15%;
+  max-width: 500px;
 }
+#findText
+{
+  display: block;
+  position: absolute;
+  left:65%;
+  top:20%;
+  max-width: 500px;.
+}
+@keyframes incorect {
+  50% {color:red;font-size: 2rem;max-width: 580px;}
+  100% {color:black;font-size: 1.75rem;max-width: 500px;}
+}
+
+
 .church-img
 {
 
   display: block;
   visibility:hidden;
-
+  z-index: 5;
   left:65%;
   top:30%;
 
@@ -90,10 +127,14 @@ height: 40px;
 }
 @media only screen and (max-width: 1500px) {
 
+  #imgheader ,#findText
+  {
+    left:70%;
+  }
   .church-img
   {
-    max-width: 300px;
-    left: 68%;
+    max-width: 400px;
+    left: 70%;
   }
   .img-flex
   {
