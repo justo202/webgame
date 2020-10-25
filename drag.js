@@ -6,20 +6,56 @@ var done = 0; //variable that's determines how many are done
 
 var images = document.getElementsByClassName("church-img dragme");
 var destinations = document.getElementsByClassName("destination");
+var churchNames = [
+  'Antakalnio Šv. apaštalų Petro ir Povilo bažnyčia',
+  'Antakalnio Viešpaties Jėzaus bažnyčia',
+  'Lukiškių Šv. apaštalų Pilypo ir Jokūbo bažnyčia',
+  'Šv. arkangelo Mykolo bažnyčia',
+  'Šv. arkangelo Rapolo bažnyčia',
+  'Šv. Dvasios bažnyčia',
+  'Šv. Jono Krikštytojo ir šv. apaštalo evangelisto Jono bažnyčia',
+  'Šv. Jurgio bažnyčia',
+  'Šv. Kazimiero bažnyčia',
+  'Šv. Kotrynos Aleksandrietės bažnyčia',
+  'Šv. Pranciškaus Asyžiečio ir šv. Bernardino Sieniečio bažnyčia',
+  'Šv. Teresės Avilietės bažnyčia',
+  'Šv.Ignoto bažnyčia',
+  'Švč. Jėzaus Širdies bažnyčia',
+  'Švč. Mergelės Marijos Ėmimo į dangų bažnyčia',
+  'Švč. Mergelės Marijos Ramintojos bažnyčia',
+  'Švč. Trejybės bažnyčia',
+  'Trinapolio Švč. Trejybės bažnyčia',
+  'Užupio Šv. Baltramiejaus bažnyčia',
+  'Verkių Šv. Kryžiaus Atradimo bažnyčia',
+  'Viešpaties Žengimo į dangų bažnyčia',
+  'Vilniaus Šv. Kryžiaus bažnyčia',
+  'Visų Šventųjų bažnyčia'
+];
+var imagedetails = [];
 
+var i;
+for(i = 0;i<23;i++) //initalise array that stores all the required information for the image
+{
+  var image = {
+    destination: destinations[i].getBoundingClientRect(),
+    img: images[i],
+    name: churchNames[i]
+  }
+  imagedetails.push(image); //pushes details on the array
+}
 
-
-  var random = Math.floor(Math.random() * 3);
-  dragElement(images[random],random);
+  var random = Math.floor(Math.random() * 23); //generates random number
+  dragElement(imagedetails[random].img,random); //starts the function
 
 
 
 function dragElement(elmnt,index) {
-  elmnt.style.visibility = "visible";
+  elmnt.style.visibility = "visible"; //makes element vissible
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   var startposx, startposy;
-  var move = true;
-var destinationx = destinations[index].getBoundingClientRect();
+  var move = true; //allows it to move
+  var wrong = 0;
+var destinationx = imagedetails[index].destination;
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
@@ -33,8 +69,8 @@ var destinationx = destinations[index].getBoundingClientRect();
   }
   function reduceSize(element)
   {
-    element.style.width = "100px";
-    element.style.height = "100px";
+    element.style.width = "45px";
+    element.style.height = "auto";
   }
   function dragMouseDown(e) {
     if(move)
@@ -72,34 +108,78 @@ var destinationx = destinations[index].getBoundingClientRect();
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
 
+
+  function CheckifHover(x,y)
+  {
+    var l;
+    for(l = 0;l< 23;l++)
+    {
+      if ((y > imagedetails[l].destination.top) && (y < imagedetails[l].destination.bottom) && (x > imagedetails[l].destination.left) && (x < imagedetails[l].destination.right))
+      {
+        document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi: " + imagedetails[l].name;
+        document.getElementById("findText").style.animation = "incorect 3s 1";
+
+        var elm = document.getElementById("findText");
+        var newone = elm.cloneNode(true);
+        elm.parentNode.replaceChild(newone, elm);
+      }
+    }
+
+  }
   function closeDragElement() {
     // stop moving when mouse button is released:
-  var coordinates = elmnt.getBoundingClientRect();
+  //var coordinates = elmnt.getBoundingClientRect();
 
 
-    if ((coordinates.top > destinationx.top) && (coordinates.top < destinationx.bottom) && (coordinates.left > destinationx.left) && (coordinates.left < destinationx.right))
+    if ((event.clientY > destinationx.top) && (event.clientY < destinationx.bottom) && (event.clientX > destinationx.left) && (event.clientX < destinationx.right))
     {
       move = false;
       elmnt.style.cursor = "pointer";
       elmnt.style.top = destinationx.top+"px";
       elmnt.style.left = destinationx.left+"px";
       done++;
-      if(done < 3)
+      if(done < 23)
       {
-        var random = Math.floor(Math.random() * 3);
+        var random = Math.floor(Math.random() * 23);
         while(images[random].style.visibility == "visible")
         {
-          random = Math.floor(Math.random() * 3);
+          random = Math.floor(Math.random() * 23);
 
         }
+        document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
         dragElement(images[random],random);
       }
     }
     else {
+      wrong++;
+      if(wrong < 3)
+      {
+      CheckifHover(event.clientX,event.clientY);
       elmnt.style.width = originalWidth; //returns to original size
       elmnt.style.height = originalHeight;
       elmnt.style.top = startposy+"px";
       elmnt.style.left = startposx+"px";
+      }
+      else {
+        move = false;
+      
+        elmnt.style.cursor = "pointer";
+        elmnt.style.top = destinationx.top+"px";
+        elmnt.style.left = destinationx.left+"px";
+
+        done++;
+        if(done < 23)
+        {
+          var random = Math.floor(Math.random() * 23);
+          while(images[random].style.visibility == "visible")
+          {
+            random = Math.floor(Math.random() * 23);
+
+          }
+          document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
+          dragElement(images[random],random);
+        }
+      }
     }
 
     document.onmouseup = null;
