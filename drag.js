@@ -54,6 +54,7 @@ function dragElement(elmnt,index) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   var startposx, startposy;
   var move = true; //allows it to move
+  var wrong = 0;
 var destinationx = imagedetails[index].destination;
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
@@ -150,11 +151,35 @@ var destinationx = imagedetails[index].destination;
       }
     }
     else {
+      wrong++;
+      if(wrong < 3)
+      {
       CheckifHover(event.clientX,event.clientY);
       elmnt.style.width = originalWidth; //returns to original size
       elmnt.style.height = originalHeight;
       elmnt.style.top = startposy+"px";
       elmnt.style.left = startposx+"px";
+      }
+      else {
+        move = false;
+      
+        elmnt.style.cursor = "pointer";
+        elmnt.style.top = destinationx.top+"px";
+        elmnt.style.left = destinationx.left+"px";
+
+        done++;
+        if(done < 23)
+        {
+          var random = Math.floor(Math.random() * 23);
+          while(images[random].style.visibility == "visible")
+          {
+            random = Math.floor(Math.random() * 23);
+
+          }
+          document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
+          dragElement(images[random],random);
+        }
+      }
     }
 
     document.onmouseup = null;

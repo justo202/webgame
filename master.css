@@ -56,10 +56,11 @@ padding-right: 5px;
   position: absolute;
   left:65%;
   top:20%;
-  max-width: 500px;.
+  max-width: 500px;
+
 }
 @keyframes incorect {
-  50% {color:red;font-size: 2rem;max-width: 580px;}
+  50% {color:red;font-size: 1.85rem;max-width: 540px;}
   100% {color:black;font-size: 1.75rem;max-width: 500px;}
 }
 
