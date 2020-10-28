@@ -31,8 +31,10 @@ var churchNames = [
   'Vilniaus Šv. Kryžiaus bažnyčia',
   'Visų Šventųjų bažnyčia'
 ];
-var imagedetails = [];
 
+
+
+var imagedetails = [];
 var i;
 for(i = 0;i<23;i++) //initalise array that stores all the required information for the image
 {
@@ -42,7 +44,23 @@ for(i = 0;i<23;i++) //initalise array that stores all the required information f
     name: churchNames[i]
   }
   imagedetails.push(image); //pushes details on the array
+
 }
+
+for(let n = 0; n < 23;n++)
+{
+
+  destinations[n].addEventListener("click",function()
+{
+  var imgNumb = n+1;
+  var variable = n;
+  document.getElementById("modalTitle").innerHTML = churchNames[variable];
+  document.getElementById("modalImg").src = "img/" + imgNumb + ".png";
+});
+}
+
+
+
 
   var random = Math.floor(Math.random() * 23); //generates random number
   dragElement(imagedetails[random].img,random); //starts the function
@@ -56,6 +74,8 @@ function dragElement(elmnt,index) {
   var move = true; //allows it to move
   var wrong = 0;
 var destinationx = imagedetails[index].destination;
+
+
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
@@ -91,6 +111,19 @@ var destinationx = imagedetails[index].destination;
 
       document.onmousemove = elementDrag;
     }
+    else
+    {
+        var imgNumb = index+1;
+        document.getElementById("modalTitle").innerHTML = imagedetails[index].name;
+        document.getElementById("modalImg").src = "img/" + imgNumb + ".png";
+        elmnt.dataset.target = "#modal";
+      var myModal = new coreui.Modal(document.getElementById('myModal'), {
+        keyboard: true
+        })
+
+      myModal.show();
+
+    }
   }
 
   function elementDrag(e) {
@@ -116,8 +149,9 @@ var destinationx = imagedetails[index].destination;
     {
       if ((y > imagedetails[l].destination.top) && (y < imagedetails[l].destination.bottom) && (x > imagedetails[l].destination.left) && (x < imagedetails[l].destination.right))
       {
+        wrong++;
         document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi: " + imagedetails[l].name;
-        document.getElementById("findText").style.animation = "incorect 3s 1";
+        document.getElementById("findText").style.animation = "incorect 2s 1";
 
         var elm = document.getElementById("findText");
         var newone = elm.cloneNode(true);
@@ -131,15 +165,19 @@ var destinationx = imagedetails[index].destination;
   //var coordinates = elmnt.getBoundingClientRect();
 
 
-    if ((event.clientY > destinationx.top) && (event.clientY < destinationx.bottom) && (event.clientX > destinationx.left) && (event.clientX < destinationx.right))
+    if ((wrong == 2)||((event.clientY > destinationx.top) && (event.clientY < destinationx.bottom) && (event.clientX > destinationx.left) && (event.clientX < destinationx.right)))
     {
       move = false;
       elmnt.style.cursor = "pointer";
       elmnt.style.top = destinationx.top+"px";
       elmnt.style.left = destinationx.left+"px";
       done++;
+
+
+
       if(done < 23)
       {
+
         var random = Math.floor(Math.random() * 23);
         while(images[random].style.visibility == "visible")
         {
@@ -147,42 +185,23 @@ var destinationx = imagedetails[index].destination;
 
         }
         document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
+
         dragElement(images[random],random);
       }
     }
     else {
-      wrong++;
-      if(wrong < 3)
-      {
+
+
       CheckifHover(event.clientX,event.clientY);
       elmnt.style.width = originalWidth; //returns to original size
       elmnt.style.height = originalHeight;
       elmnt.style.top = startposy+"px";
       elmnt.style.left = startposx+"px";
-      }
-      else {
-        move = false;
-      
-        elmnt.style.cursor = "pointer";
-        elmnt.style.top = destinationx.top+"px";
-        elmnt.style.left = destinationx.left+"px";
 
-        done++;
-        if(done < 23)
-        {
-          var random = Math.floor(Math.random() * 23);
-          while(images[random].style.visibility == "visible")
-          {
-            random = Math.floor(Math.random() * 23);
-
-          }
-          document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
-          dragElement(images[random],random);
-        }
-      }
     }
 
     document.onmouseup = null;
     document.onmousemove = null;
   }
+
 }

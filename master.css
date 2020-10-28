@@ -85,12 +85,12 @@ padding-right: 5px;
 position: absolute;
 width: 30px;
 height: 40px;
-
-
 }
+
 .destination:hover {
 -webkit-filter: saturate(4);
 -webkit-filter: contrast(180%);
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1028px) {
