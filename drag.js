@@ -68,13 +68,20 @@ for(let n = 0; n < 23;n++)
 
 
 function dragElement(elmnt,index) {
+  window.onresize = function()
+  {
+    elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
+    elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
+    elmnt.style.top = document.getElementById("hide").offsetTop + "px";
+    elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
+
+  };
   elmnt.style.visibility = "visible"; //makes element vissible
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   var startposx, startposy;
   var move = true; //allows it to move
   var wrong = 0;
 var destinationx = imagedetails[index].destination;
-
 
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
@@ -104,8 +111,8 @@ var destinationx = imagedetails[index].destination;
       originalHeight = elmnt.style.height;
       originalWidth = elmnt.style.width;
       reduceSize(elmnt); //reduces images size
-      elmnt.style.top = (pos4-elmnt.width/2) + "px"; //centers the image
-      elmnt.style.left = (pos3-elmnt.height/2) + "px";
+      elmnt.style.top = (pos4-elmnt.height/2) + "px"; //centers the image
+      elmnt.style.left = (pos3-elmnt.width/2) + "px";
       document.onmouseup = closeDragElement;
       // cll a function whenever the cursor moves:
 
@@ -191,12 +198,12 @@ var destinationx = imagedetails[index].destination;
     }
     else {
 
-
+      
       CheckifHover(event.clientX,event.clientY);
-      elmnt.style.width = originalWidth; //returns to original size
-      elmnt.style.height = originalHeight;
-      elmnt.style.top = startposy+"px";
-      elmnt.style.left = startposx+"px";
+      elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
+      elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
+      elmnt.style.top = document.getElementById("hide").offsetTop + "px";
+      elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
 
     }
 

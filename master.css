@@ -47,7 +47,7 @@ padding-right: 5px;
   display: block;
   position: absolute;
   left:65%;
-  top:15%;
+  top:calc(30% + 510px);
   max-width: 500px;
 }
 #findText
@@ -93,56 +93,108 @@ height: 40px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1028px) {
 
-  .map
-  {
-    background-image: url("img/600px.png");
-    flex:60%;
-  }
-  .img-flex
-  {
-    flex:40%;
-  }
-  .church-img
-  {
-    max-width: 150px;
-    left:65%;
-  }
-}
-@media only screen and (max-width: 1350px) { /*neveikia kazkodel*/
 
-  .church-img
-  {
-    max-width: 200px;
-    left: 80%;
-  }
-  .img-flex
-  {
-    flex:20%;
-  }
-  .map
-  {
-    flex:80%;
-  }
-}
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1560px) {
 
   #imgheader ,#findText
   {
     left:70%;
   }
+  #imgheader
+  {
+    top:calc(30% + 410px);
+  }
   .church-img
   {
-    max-width: 400px;
+    width: 400px;
     left: 70%;
   }
-  .img-flex
+
+}
+@media only screen and (max-width: 1426px) { /*neveikia kazkodel*/
+
+  .church-img
   {
-    flex:32%;
+    width: 300px;
+    left: 75%;
   }
+  #imgheader, #findText
+  {
+    left: 75%;
+  }
+  #imgheader
+  {
+    top:calc(30% + 310px);
+  }
+
+}
+@media only screen and (max-width: 1325px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    width:250px;
+    left: 80%;
+  }
+  #imgheader, #findText
+  {
+    left: 80%;
+  }
+  #imgheader
+  {
+    top:calc(30% + 250px);
+  }
+
+}
+@media only screen and (max-width: 1238px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    width:220px;
+    left: 85%;
+    top:35%;
+  }
+  #imgheader, #findText
+  {
+    top: 23%;
+    left: 85%;
+    width:220px;
+  }
+  #imgheader
+  {
+
+    top:calc(35% + 240px);
+  }
+
+}
+@media only screen and (max-width: 1172px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    left: 95%;
+
+  }
+  #imgheader, #findText
+  {
+    left: 95%;
+  }
+
+
+}
+@media only screen and (max-width: 1028px) {
+
   .map
   {
-    flex:68%;
+    background-image: url("img/600px.png");
+
+  }
+  .church-img
+  {
+    max-width: 150px ;
+    left:65%;
+  }
+  #imgheader
+  {
+    top:calc(30% + 150px);
   }
 }
