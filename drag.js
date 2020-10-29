@@ -19,7 +19,7 @@ var churchNames = [
   'Šv. Kotrynos Aleksandrietės bažnyčia',
   'Šv. Pranciškaus Asyžiečio ir šv. Bernardino Sieniečio bažnyčia',
   'Šv. Teresės Avilietės bažnyčia',
-  'Šv.Ignoto bažnyčia',
+  'Šv. Ignoto bažnyčia',
   'Švč. Jėzaus Širdies bažnyčia',
   'Švč. Mergelės Marijos Ėmimo į dangų bažnyčia',
   'Švč. Mergelės Marijos Ramintojos bažnyčia',
