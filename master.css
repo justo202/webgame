@@ -47,7 +47,7 @@ padding-right: 5px;
   display: block;
   position: absolute;
   left:65%;
-  top:15%;
+  top:calc(30% + 510px);
   max-width: 500px;
 }
 #findText
@@ -55,13 +55,14 @@ padding-right: 5px;
   display: block;
   position: absolute;
   left:65%;
-  top:20%;
+  top:17%;
   max-width: 500px;
+  font-size: 1.5rem;
 
 }
 @keyframes incorect {
-  50% {color:red;font-size: 1.85rem;max-width: 540px;}
-  100% {color:black;font-size: 1.75rem;max-width: 500px;}
+  50% {color:red;font-size: 1.75rem;max-width: 570px;}
+  100% {color:black;font-size: 1.5rem;max-width: 500px;}
 }
 
 
@@ -85,64 +86,128 @@ padding-right: 5px;
 position: absolute;
 width: 30px;
 height: 40px;
-
-
 }
+
 .destination:hover {
 -webkit-filter: saturate(4);
 -webkit-filter: contrast(180%);
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 1028px) {
 
-  .map
-  {
-    background-image: url("img/600px.png");
-    flex:60%;
-  }
-  .img-flex
-  {
-    flex:40%;
-  }
-  .church-img
-  {
-    max-width: 150px;
-    left:65%;
-  }
-}
-@media only screen and (max-width: 1350px) { /*neveikia kazkodel*/
 
-  .church-img
-  {
-    max-width: 200px;
-    left: 80%;
-  }
-  .img-flex
-  {
-    flex:20%;
-  }
-  .map
-  {
-    flex:80%;
-  }
-}
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1560px) {
 
   #imgheader ,#findText
   {
     left:70%;
   }
+  #imgheader
+  {
+    top:calc(30% + 410px);
+  }
   .church-img
   {
-    max-width: 400px;
+    width: 400px;
     left: 70%;
   }
-  .img-flex
+
+}
+@media only screen and (max-width: 1426px) { /*neveikia kazkodel*/
+
+  .church-img
   {
-    flex:32%;
+    width: 300px;
+    left: 75%;
   }
+  #imgheader, #findText
+  {
+    left: 75%;
+    font-size: 1.5rem;
+  }
+
+  #imgheader
+  {
+    top:calc(30% + 310px);
+  }
+  #main-img
+  {
+    width: 500px !important;
+  }
+}
+@media only screen and (max-width: 1325px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    width:250px;
+    left: 80%;
+  }
+  #imgheader, #findText
+  {
+    left: 80%;
+    top:14%;
+  }
+  #imgheader
+  {
+    top:calc(30% + 260px);
+  }
+
+}
+@media only screen and (max-width: 1238px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    width:220px;
+    left: 85%;
+    top:35%;
+  }
+  #imgheader, #findText
+  {
+    top: 22%;
+    left: 85%;
+    width:220px;
+    font-size: 1.5rem;
+  }
+  #imgheader
+  {
+
+
+    top:calc(35% + 240px);
+  }
+
+}
+@media only screen and (max-width: 1172px) { /*neveikia kazkodel*/
+
+  .church-img
+  {
+    left: 95%;
+
+  }
+  #imgheader, #findText
+  {
+    left: 95%;
+
+  }
+  #findText
+  {
+    top:10%;
+  }
+
+}
+@media only screen and (max-width: 1028px) {
+
   .map
   {
-    flex:68%;
+    background-image: url("img/600px.png");
+
+  }
+  .church-img
+  {
+    max-width: 150px ;
+    left:65%;
+  }
+  #imgheader
+  {
+    top:calc(30% + 150px);
   }
 }
