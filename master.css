@@ -55,13 +55,14 @@ padding-right: 5px;
   display: block;
   position: absolute;
   left:65%;
-  top:20%;
+  top:17%;
   max-width: 500px;
+  font-size: 1.5rem;
 
 }
 @keyframes incorect {
-  50% {color:red;font-size: 1.85rem;max-width: 540px;}
-  100% {color:black;font-size: 1.75rem;max-width: 500px;}
+  50% {color:red;font-size: 1.75rem;max-width: 570px;}
+  100% {color:black;font-size: 1.5rem;max-width: 500px;}
 }
 
 
@@ -122,12 +123,17 @@ height: 40px;
   #imgheader, #findText
   {
     left: 75%;
+    font-size: 1.5rem;
   }
+
   #imgheader
   {
     top:calc(30% + 310px);
   }
-
+  #main-img
+  {
+    width: 500px !important;
+  }
 }
 @media only screen and (max-width: 1325px) { /*neveikia kazkodel*/
 
@@ -139,10 +145,11 @@ height: 40px;
   #imgheader, #findText
   {
     left: 80%;
+    top:14%;
   }
   #imgheader
   {
-    top:calc(30% + 250px);
+    top:calc(30% + 260px);
   }
 
 }
@@ -156,12 +163,14 @@ height: 40px;
   }
   #imgheader, #findText
   {
-    top: 23%;
+    top: 22%;
     left: 85%;
     width:220px;
+    font-size: 1.5rem;
   }
   #imgheader
   {
+
 
     top:calc(35% + 240px);
   }
@@ -177,8 +186,12 @@ height: 40px;
   #imgheader, #findText
   {
     left: 95%;
-  }
 
+  }
+  #findText
+  {
+    top:10%;
+  }
 
 }
 @media only screen and (max-width: 1028px) {

@@ -68,12 +68,19 @@ for(let n = 0; n < 23;n++)
 
 
 function dragElement(elmnt,index) {
-  window.onresize = function()
+  window.onresize = function() //makes element always be in the correct spot
   {
     elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
     elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
     elmnt.style.top = document.getElementById("hide").offsetTop + "px";
     elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
+
+  };
+  document.getElementById("imgheader").onclick = function()
+  {
+    var imgNumb = index + 1;
+    document.getElementById("modalTitle").innerHTML = imagedetails[index].name;
+    document.getElementById("modalImg").src = "img/" + imgNumb + ".png";
 
   };
   elmnt.style.visibility = "visible"; //makes element vissible
@@ -82,6 +89,8 @@ function dragElement(elmnt,index) {
   var move = true; //allows it to move
   var wrong = 0;
 var destinationx = imagedetails[index].destination;
+
+
 
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
@@ -106,8 +115,8 @@ var destinationx = imagedetails[index].destination;
       e.preventDefault();
       // get the mouse cursor position at startup:
 
-      pos3 = e.clientX;
-      pos4 = e.clientY;
+      pos3 = e.pageX;
+      pos4 = e.pageY;
       originalHeight = elmnt.style.height;
       originalWidth = elmnt.style.width;
       reduceSize(elmnt); //reduces images size
@@ -139,10 +148,12 @@ var destinationx = imagedetails[index].destination;
 
 
     // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+      pos1 = pos3 - e.pageX;
+      pos2 = pos4 - e.pageY;
+      pos3 = e.pageX;
+      pos4 = e.pageY;
+
+
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
@@ -172,8 +183,9 @@ var destinationx = imagedetails[index].destination;
   //var coordinates = elmnt.getBoundingClientRect();
 
 
-    if ((wrong == 2)||((event.clientY > destinationx.top) && (event.clientY < destinationx.bottom) && (event.clientX > destinationx.left) && (event.clientX < destinationx.right)))
+    if ((wrong == 2)||((event.pageY > destinationx.top) && (event.pageY < destinationx.bottom) && (event.pageX > destinationx.left) && (event.pageX < destinationx.right)))
     {
+
       move = false;
       elmnt.style.cursor = "pointer";
       elmnt.style.top = destinationx.top+"px";
@@ -198,7 +210,7 @@ var destinationx = imagedetails[index].destination;
     }
     else {
 
-      
+
       CheckifHover(event.clientX,event.clientY);
       elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
