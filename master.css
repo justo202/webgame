@@ -4,6 +4,7 @@ body
   margin: 0;
   height: 100%;
 }
+
 .top
 {
 
@@ -198,12 +199,12 @@ height: 40px;
 
   .map
   {
-    background-image: url("img/600px.png");
+    background-image: url("img/1200+px-smaller.png");
 
   }
   .church-img
   {
-    max-width: 150px ;
+
     left:65%;
   }
   #imgheader

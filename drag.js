@@ -211,7 +211,7 @@ var destinationx = imagedetails[index].destination;
     else {
 
 
-      CheckifHover(event.clientX,event.clientY);
+      CheckifHover(event.pageX,event.pageY);
       elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
       elmnt.style.top = document.getElementById("hide").offsetTop + "px";
