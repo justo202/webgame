@@ -111,6 +111,7 @@ function dragElement(elmnt,index) {
   function dragMouseDown(e) {
     if(move)
     {
+      imgmove = true;
       e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
@@ -189,8 +190,7 @@ function dragElement(elmnt,index) {
   //var coordinates = elmnt.getBoundingClientRect();
     var realX = event.pageX - map.offsetLeft;
     var realY = event.pageY - map.offsetTop;
-    var scrollsX = document.getElementById("map-parent").scrollLeft;
-    var scrollsY = document.getElementById("map-parent").scrollTop;
+
     var dest = imagedetails[index].destination.getBoundingClientRect()
 
 
@@ -199,6 +199,7 @@ function dragElement(elmnt,index) {
     {
 
       move = false;
+      imgmove = false;
 //      elmnt.style.cursor = "pointer";
   //    elmnt.style.top = destinationx.top+"px";
 //      elmnt.style.left = destinationx.left+"px";
@@ -226,7 +227,7 @@ function dragElement(elmnt,index) {
       }
     }
     else {
-
+      imgmove = false;
       CheckifHover(realX,realY);
       elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
