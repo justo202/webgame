@@ -20,21 +20,29 @@ body
   opacity: 0.9;
 
 }
+.map-parent
+{
+  height: 905px;
+  width: 1100px;
+  padding-right: 5px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
 .map
 {
   /*flex: 60%; 1270 */
   /*Sets the height to be 98 viewport units so that it would fill the entire screen */
-height: 905px;
-width: 1270px;
+height: 100%;
+width: 100%;
 display: block;
 background-image: url("img/1200+px.png");
 background-repeat: no-repeat;
-background-size:  contain;
+background-size:  1100px 1070px;
 object-fit: contain;
-padding-right: 5px;
-
+position: relative;
+transition: 1s;
 }
-
+/*TO ZOOM INCREASE DIV HEIG AND BACKGROUND SIZE */
 .rowcustom {
 
   padding-top: 5px;
@@ -87,6 +95,7 @@ padding-right: 5px;
 position: absolute;
 width: 30px;
 height: 40px;
+transition: 1s;
 }
 
 .destination:hover {

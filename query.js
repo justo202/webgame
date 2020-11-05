@@ -8,10 +8,10 @@ function myFunction(x,y) {
     for(let x = 0; x < destinations.length;x++)
     {
       var rect = destinations[x].getBoundingClientRect();
-      var xx = rect.left-140; //172 is the difference in width between the images
-      var yy = rect.top-3;
+      var xx = rect.left-140 - window.pageXOffset;; //172 is the difference in width between the images
+      var yy = rect.top-3 - window.pageXOffset;;
       destinations[x].style.left = xx + "px";
-      destinations[x].style.top = yy + "px";
+      //destinations[x].style.top = yy + "px";
 
     }
     change = false;
@@ -24,10 +24,10 @@ function myFunction(x,y) {
     for(let x = 0; x < destinations.length;x++)
     {
       var rect = destinations[x].getBoundingClientRect();
-      var xx = rect.left+140; //172 is the difference in width between the images
-      var yy = rect.top+3;
+      var xx = rect.left+140 - window.pageXOffset;; //172 is the difference in width between the images
+      var yy = rect.top+3 - window.pageXOffset;;
       destinations[x].style.left = xx + "px";
-      destinations[x].style.top = yy + "px";
+    //  destinations[x].style.top = yy + "px";
 
     }
     change = true;

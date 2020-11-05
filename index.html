@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
      <link rel="stylesheet" href="master.css">
     <title>Game</title>
+
   </head>
   <body>
     <div class="top align-middle" id = "top">
@@ -22,7 +23,10 @@
 
     </div>
     <div class="rowcustom">
-      <span class="map">
+      <div id = "map-parent" class="map-parent">
+
+
+      <div id = "map-id" class="map">
        <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:895px; top:345px"src="img/mag1.png" alt="1">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:950px;top:210px"src="img/mag2-removebg-preview.png" alt="2">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:435px;top:420px"src="img/mag3-removebg-preview.png" alt="3">
@@ -46,8 +50,8 @@
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:760px;top:740px"src="img/mag21-removebg-preview.png" alt="21">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:620px;top:570px"src="img/mag22-removebg-preview.png" alt="22">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:600px;top:770px"src="img/mag23-removebg-preview.png" alt="23">
-      </span>
-
+      </div>
+  </div>
       <button id = "imgheader"  data-toggle="modal" data-target="#modal" type="button" class="btn btn-dark mx-auto" >SUŽINOK DAUGIAU</button>
       <h3 id = "findText">RASK ŠIĄ BAŽNYČIĄ! TURI TRIS BANDYMUS</h3>
       <span class="img-flex">
@@ -99,7 +103,9 @@
       </div>
     </div>
 
+    <script src = "zoom.js">
 
+    </script>
     <script src = "query.js">
 
     </script>

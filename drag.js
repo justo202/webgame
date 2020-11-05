@@ -3,7 +3,7 @@
 var originalHeight, originalWidth
 var done = 0; //variable that's determines how many are done
 
-
+var map = document.getElementById("map-id");
 var images = document.getElementsByClassName("church-img dragme");
 var destinations = document.getElementsByClassName("destination");
 var churchNames = [
@@ -39,7 +39,7 @@ var i;
 for(i = 0;i<23;i++) //initalise array that stores all the required information for the image
 {
   var image = {
-    destination: destinations[i].getBoundingClientRect(),
+    destination: destinations[i],
     img: images[i],
     name: churchNames[i]
   }
@@ -88,7 +88,7 @@ function dragElement(elmnt,index) {
   var startposx, startposy;
   var move = true; //allows it to move
   var wrong = 0;
-var destinationx = imagedetails[index].destination;
+
 
 
 
@@ -126,6 +126,7 @@ var destinationx = imagedetails[index].destination;
       // cll a function whenever the cursor moves:
 
       document.onmousemove = elementDrag;
+
     }
     else
     {
@@ -157,15 +158,20 @@ var destinationx = imagedetails[index].destination;
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
   }
 
 
   function CheckifHover(x,y)
   {
     var l;
+
     for(l = 0;l< 23;l++)
     {
-      if ((y > imagedetails[l].destination.top) && (y < imagedetails[l].destination.bottom) && (x > imagedetails[l].destination.left) && (x < imagedetails[l].destination.right))
+
+      var dest = imagedetails[l].destination.getBoundingClientRect()
+
+      if ((y > (dest.top-map.offsetTop)) && (y < (dest.bottom-map.offsetTop)) && (x > (dest.left-map.offsetLeft)) && (x < (dest.right- map.offsetLeft)))
       {
         wrong++;
         document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi: " + imagedetails[l].name;
@@ -181,15 +187,26 @@ var destinationx = imagedetails[index].destination;
   function closeDragElement() {
     // stop moving when mouse button is released:
   //var coordinates = elmnt.getBoundingClientRect();
+    var realX = event.pageX - map.offsetLeft;
+    var realY = event.pageY - map.offsetTop;
+    var scrollsX = document.getElementById("map-parent").scrollLeft;
+    var scrollsY = document.getElementById("map-parent").scrollTop;
+    var dest = imagedetails[index].destination.getBoundingClientRect()
 
 
-    if ((wrong == 2)||((event.pageY > destinationx.top) && (event.pageY < destinationx.bottom) && (event.pageX > destinationx.left) && (event.pageX < destinationx.right)))
+  //  alert(dest.top + " " + dest.left + "///" + (realY+scrollsY))
+    if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
       move = false;
-      elmnt.style.cursor = "pointer";
-      elmnt.style.top = destinationx.top+"px";
-      elmnt.style.left = destinationx.left+"px";
+//      elmnt.style.cursor = "pointer";
+  //    elmnt.style.top = destinationx.top+"px";
+//      elmnt.style.left = destinationx.left+"px";
+
+      destinations[index].src = images[index].src;
+      images[index].style.width = "60px";
+      images[index].style.height = "60px";
+          elmnt.style.display = "none";
       done++;
 
 
@@ -210,8 +227,7 @@ var destinationx = imagedetails[index].destination;
     }
     else {
 
-
-      CheckifHover(event.pageX,event.pageY);
+      CheckifHover(realX,realY);
       elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
       elmnt.style.top = document.getElementById("hide").offsetTop + "px";
