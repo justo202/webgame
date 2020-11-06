@@ -1,5 +1,4 @@
 
-var zoomed = false
 var map = document.getElementById("map-id");
 var parent = document.getElementById("map-parent");
 var destination = document.getElementsByClassName("destination");

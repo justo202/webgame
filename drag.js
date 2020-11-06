@@ -198,16 +198,21 @@ function dragElement(elmnt,index) {
     if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
+      if(wrong == 2)
+      alert("Išnaudojote tris bandymus!");
+      if(zoomed) //determines the animation based on if the map is zoomed or not
+      {
+        destination[index].style.animation = "imgPlacedZoomed 2s 1";
+      }
+      else {
+        destination[index].style.animation = "imgPlacedOut 2s 1";
+      }
+
       move = false;
       imgmove = false;
-//      elmnt.style.cursor = "pointer";
-  //    elmnt.style.top = destinationx.top+"px";
-//      elmnt.style.left = destinationx.left+"px";
-
       destinations[index].src = images[index].src;
-    //  images[index].style.width = "60px";
-    //  images[index].style.height = "60px";
           elmnt.style.display = "none";
+
       done++;
 
 
