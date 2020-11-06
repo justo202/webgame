@@ -205,8 +205,8 @@ function dragElement(elmnt,index) {
 //      elmnt.style.left = destinationx.left+"px";
 
       destinations[index].src = images[index].src;
-      images[index].style.width = "60px";
-      images[index].style.height = "60px";
+    //  images[index].style.width = "60px";
+    //  images[index].style.height = "60px";
           elmnt.style.display = "none";
       done++;
 
