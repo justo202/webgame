@@ -2,6 +2,7 @@
 
 var originalHeight, originalWidth
 var done = 0; //variable that's determines how many are done
+var correct = 0; //variable that determines how many the player guessed right
 
 var map = document.getElementById("map-id");
 var images = document.getElementsByClassName("church-img dragme");
@@ -214,7 +215,8 @@ function dragElement(elmnt,index) {
           elmnt.style.display = "none";
 
       done++;
-
+      if(wrong != 2)
+      correct++;
 
 
       if(done < 23)
@@ -230,6 +232,33 @@ function dragElement(elmnt,index) {
 
         dragElement(images[random],random);
       }
+      else {
+        document.getElementById("top-end").style.display = "block"; ///displays the ending screen
+
+        if(correct == 0)
+        {
+            document.getElementById("end-text").innerHTML = "Pabandyk dar kartą, gal geriau pasiseks?"
+        }
+        else if(correct == 1 || correct == 21)
+        {
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčią";
+        }
+        else if(correct < 10)
+        {
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+        }
+        else if (correct < 21){
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčių."
+        }
+        else
+        {
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+        }
+
+
+      }
+
+
     }
     else {
       imgmove = false;
