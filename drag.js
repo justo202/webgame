@@ -2,8 +2,9 @@
 
 var originalHeight, originalWidth
 var done = 0; //variable that's determines how many are done
+var correct = 0; //variable that determines how many the player guessed right
 
-
+var map = document.getElementById("map-id");
 var images = document.getElementsByClassName("church-img dragme");
 var destinations = document.getElementsByClassName("destination");
 var churchNames = [
@@ -19,7 +20,7 @@ var churchNames = [
   'Šv. Kotrynos Aleksandrietės bažnyčia',
   'Šv. Pranciškaus Asyžiečio ir šv. Bernardino Sieniečio bažnyčia',
   'Šv. Teresės Avilietės bažnyčia',
-  'Šv.Ignoto bažnyčia',
+  'Šv. Ignoto bažnyčia',
   'Švč. Jėzaus Širdies bažnyčia',
   'Švč. Mergelės Marijos Ėmimo į dangų bažnyčia',
   'Švč. Mergelės Marijos Ramintojos bažnyčia',
@@ -39,7 +40,7 @@ var i;
 for(i = 0;i<23;i++) //initalise array that stores all the required information for the image
 {
   var image = {
-    destination: destinations[i].getBoundingClientRect(),
+    destination: destinations[i],
     img: images[i],
     name: churchNames[i]
   }
@@ -88,7 +89,7 @@ function dragElement(elmnt,index) {
   var startposx, startposy;
   var move = true; //allows it to move
   var wrong = 0;
-var destinationx = imagedetails[index].destination;
+
 
 
 
@@ -111,6 +112,7 @@ var destinationx = imagedetails[index].destination;
   function dragMouseDown(e) {
     if(move)
     {
+      imgmove = true;
       e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
@@ -126,6 +128,7 @@ var destinationx = imagedetails[index].destination;
       // cll a function whenever the cursor moves:
 
       document.onmousemove = elementDrag;
+
     }
     else
     {
@@ -157,15 +160,20 @@ var destinationx = imagedetails[index].destination;
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
   }
 
 
   function CheckifHover(x,y)
   {
     var l;
+
     for(l = 0;l< 23;l++)
     {
-      if ((y > imagedetails[l].destination.top) && (y < imagedetails[l].destination.bottom) && (x > imagedetails[l].destination.left) && (x < imagedetails[l].destination.right))
+
+      var dest = imagedetails[l].destination.getBoundingClientRect()
+
+      if ((y > (dest.top-map.offsetTop)) && (y < (dest.bottom-map.offsetTop)) && (x > (dest.left-map.offsetLeft)) && (x < (dest.right- map.offsetLeft)))
       {
         wrong++;
         document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi: " + imagedetails[l].name;
@@ -181,17 +189,34 @@ var destinationx = imagedetails[index].destination;
   function closeDragElement() {
     // stop moving when mouse button is released:
   //var coordinates = elmnt.getBoundingClientRect();
+    var realX = event.pageX - map.offsetLeft;
+    var realY = event.pageY - map.offsetTop;
+
+    var dest = imagedetails[index].destination.getBoundingClientRect()
 
 
-    if ((wrong == 2)||((event.pageY > destinationx.top) && (event.pageY < destinationx.bottom) && (event.pageX > destinationx.left) && (event.pageX < destinationx.right)))
+  //  alert(dest.top + " " + dest.left + "///" + (realY+scrollsY))
+    if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
-      move = false;
-      elmnt.style.cursor = "pointer";
-      elmnt.style.top = destinationx.top+"px";
-      elmnt.style.left = destinationx.left+"px";
-      done++;
+      if(wrong == 2)
+      alert("Išnaudojote tris bandymus!");
+      if(zoomed) //determines the animation based on if the map is zoomed or not
+      {
+        destination[index].style.animation = "imgPlacedZoomed 2s 1";
+      }
+      else {
+        destination[index].style.animation = "imgPlacedOut 2s 1";
+      }
 
+      move = false;
+      imgmove = false;
+      destinations[index].src = images[index].src;
+          elmnt.style.display = "none";
+
+      done++;
+      if(wrong != 2)
+      correct++;
 
 
       if(done < 23)
@@ -207,11 +232,37 @@ var destinationx = imagedetails[index].destination;
 
         dragElement(images[random],random);
       }
+      else {
+        document.getElementById("top-end").style.display = "block"; ///displays the ending screen
+
+        if(correct == 0)
+        {
+            document.getElementById("end-text").innerHTML = "Pabandyk dar kartą, gal geriau pasiseks?"
+        }
+        else if(correct == 1 || correct == 21)
+        {
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčią";
+        }
+        else if(correct < 10)
+        {
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+        }
+        else if (correct < 21){
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčių."
+        }
+        else
+        {
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+        }
+
+
+      }
+
+
     }
     else {
-
-
-      CheckifHover(event.clientX,event.clientY);
+      imgmove = false;
+      CheckifHover(realX,realY);
       elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
       elmnt.style.top = document.getElementById("hide").offsetTop + "px";

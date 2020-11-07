@@ -4,6 +4,7 @@ body
   margin: 0;
   height: 100%;
 }
+
 .top
 {
 
@@ -19,21 +20,32 @@ body
   opacity: 0.9;
 
 }
+.map-parent
+{
+  height: 905px;
+  width: 1000px;
+  padding-right: 5px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border: 2px solid gray;
+ border-radius: 5px;
+}
 .map
 {
   /*flex: 60%; 1270 */
   /*Sets the height to be 98 viewport units so that it would fill the entire screen */
 height: 905px;
-width: 1270px;
+width: 1000px;
 display: block;
-background-image: url("img/1200+px.png");
+background-image: url("img/1200++px.png");
 background-repeat: no-repeat;
-background-size:  contain;
+background-size:  1000px 950px;
 object-fit: contain;
-padding-right: 5px;
+position: relative;
+transition: 1s;
 
 }
-
+/*TO ZOOM INCREASE DIV HEIG AND BACKGROUND SIZE */
 .rowcustom {
 
   padding-top: 5px;
@@ -65,7 +77,14 @@ padding-right: 5px;
   100% {color:black;font-size: 1.5rem;max-width: 500px;}
 }
 
-
+@keyframes imgPlacedOut {
+50% {width:60px;height: 60px}
+100%{width: 35px;height: 35px;}
+}
+@keyframes imgPlacedZoomed {
+50% {width:65px;height: 65px}
+100%{width: 50px;height: 50px;}
+}
 .church-img
 {
 
@@ -80,12 +99,14 @@ padding-right: 5px;
   margin: auto; /*optional centering of image*/
   cursor: move;
   position: absolute;
+  border-radius: 5px;
 }
 .destination
 {
 position: absolute;
-width: 30px;
-height: 40px;
+width: 35px;
+height: 35px;
+transition: 1s;
 }
 
 .destination:hover {
@@ -132,7 +153,7 @@ height: 40px;
   }
   #main-img
   {
-    width: 500px !important;
+    width: 350px !important;
   }
 }
 @media only screen and (max-width: 1325px) { /*neveikia kazkodel*/
@@ -198,16 +219,20 @@ height: 40px;
 
   .map
   {
-    background-image: url("img/600px.png");
+    background-image: url("img/1200+px-smaller.png");
 
   }
   .church-img
   {
-    max-width: 150px ;
+
     left:65%;
   }
   #imgheader
   {
     top:calc(30% + 150px);
+  }
+  #main-img
+  {
+    width: 400px !important;
   }
 }
