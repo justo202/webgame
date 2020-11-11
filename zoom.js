@@ -176,7 +176,7 @@ if(!zoomed)
   map.style.width = "1520px";
   map.style.height = "1320px";
   zoomIcons();
-
+  document.getElementById("zoom-text").innerHTML = " Spustelkite 2 kartus atitolinti vaizdą";
 
 
    parent.addEventListener('mousedown', mouseDownHandler);
@@ -184,7 +184,7 @@ if(!zoomed)
   zoomed = true;
 }
 else {
-
+document.getElementById("zoom-text").innerHTML = " Spustelkite 2 kartus priartinti vaizdą";
   map.style.width = "1000px";
   map.style.height = "905px";
   map.style.backgroundSize = "1000px 950px";

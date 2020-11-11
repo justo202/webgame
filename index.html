@@ -38,7 +38,7 @@
 
     <div class="rowcustom">
       <div id = "map-parent" class="map-parent">
-
+        <h5 id = "zoom-text" style = "position:absolute;z-index: 300;">Spustelkite 2 kartus priartinti vaizdą</h5>
 <!--465 -->
       <div id = "map-id" class="map">
        <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:895px; top:320px"src="img/mag1.png" alt="1">
@@ -93,12 +93,14 @@
       <img data-toggle="modal"src="img/21.png"  class="church-img dragme" id="draggable" alt="21">
       <img data-toggle="modal"src="img/22.png"  class="church-img dragme" id="draggable" alt="22">
       <img data-toggle="modal"src="img/23.png"  class="church-img dragme" id="draggable" alt="23">
-      <img data-toggle="modal"src="img/23.png"  class="church-img dragme" id="hide" alt="hide">
+      <div  class="church-img dragme" id="hide" alt="hide"> </div>
       </span>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div style = "-moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;"class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

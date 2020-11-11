@@ -43,6 +43,9 @@ background-size:  1000px 950px;
 object-fit: contain;
 position: relative;
 transition: 1s;
+-moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
 
 }
 /*TO ZOOM INCREASE DIV HEIG AND BACKGROUND SIZE */
@@ -100,7 +103,22 @@ transition: 1s;
   cursor: move;
   position: absolute;
   border-radius: 5px;
+    border: 1px solid gray;
+
 }
+#hide
+{
+  visibility: visible;
+  border: 1px solid gray;
+
+  width: 500px;
+  height: 500px;
+  z-index: 0;
+}
+
+
+
+
 .destination
 {
 position: absolute;

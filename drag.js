@@ -199,8 +199,7 @@ function dragElement(elmnt,index) {
     if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
-      if(wrong == 2)
-      alert("Išnaudojote tris bandymus!");
+
       if(zoomed) //determines the animation based on if the map is zoomed or not
       {
         destination[index].style.animation = "imgPlacedZoomed 2s 1";
@@ -228,7 +227,7 @@ function dragElement(elmnt,index) {
           random = Math.floor(Math.random() * 23);
 
         }
-        document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
+        document.getElementById("findText").innerHTML = "RASK ŠIĄ BAŽNYČIĄ! TURI 3 BANDYMUS";
 
         dragElement(images[random],random);
       }
