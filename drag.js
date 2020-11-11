@@ -102,6 +102,7 @@ function dragElement(elmnt,index) {
       startposy = elmnt.offsetTop;
 
       elmnt.onmousedown = dragMouseDown;
+      elmnt.ontouchstart = dragMouseDown;
 
   }
   function reduceSize(element)
@@ -112,22 +113,39 @@ function dragElement(elmnt,index) {
   function dragMouseDown(e) {
     if(move)
     {
+
       imgmove = true;
       e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
 
+      if(e.type == 'touchstart' || e.type == 'touchmove')
+    {
+
+      var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+      var touch = evt.touches[0] || evt.changedTouches[0];
+      pos3 = touch.pageX;
+      pos4 = touch.pageY;
+
+    }
+    else {
+
       pos3 = e.pageX;
       pos4 = e.pageY;
+
+    }
+
       originalHeight = elmnt.style.height;
       originalWidth = elmnt.style.width;
       reduceSize(elmnt); //reduces images size
       elmnt.style.top = (pos4-elmnt.height/2) + "px"; //centers the image
       elmnt.style.left = (pos3-elmnt.width/2) + "px";
       document.onmouseup = closeDragElement;
+      document.ontouchend = closeDragElement;
       // cll a function whenever the cursor moves:
 
       document.onmousemove = elementDrag;
+      document.ontouchmove = elementDrag;
 
     }
     else
@@ -149,12 +167,27 @@ function dragElement(elmnt,index) {
     e = e || window.event;
     e.preventDefault();
 
+      if(e.type == 'touchevent' || e.type == 'touchmove')
+    {
 
-    // calculate the new cursor position:
+      var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+      var touch = evt.touches[0] || evt.changedTouches[0];
+
+      pos1 = pos3 - touch.pageX;
+      pos2 = pos4 - touch.pageY;
+      pos3 = touch.pageX;
+      pos4 = touch.pageY;
+    }
+    else {
+
       pos1 = pos3 - e.pageX;
       pos2 = pos4 - e.pageY;
       pos3 = e.pageX;
       pos4 = e.pageY;
+
+    }
+    // calculate the new cursor position:
+
 
 
     // set the element's new position:
@@ -189,14 +222,28 @@ function dragElement(elmnt,index) {
   function closeDragElement() {
     // stop moving when mouse button is released:
   //var coordinates = elmnt.getBoundingClientRect();
-    var realX = event.pageX - map.offsetLeft;
-    var realY = event.pageY - map.offsetTop;
+
+  if(event.type == 'touchend' || event.type == 'touchmove')
+{
+
+  var evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
+  var touch = evt.touches[0] || evt.changedTouches[0];
+
+  var realX = touch.clientX - map.offsetLeft;
+  var realY = touch.clientY - map.offsetTop;
+
+}
+else {
+
+  var realX = event.clientX - map.offsetLeft;
+  var realY = event.clientY - map.offsetTop;
+
+}
 
     var dest = imagedetails[index].destination.getBoundingClientRect()
 
-
   //  alert(dest.top + " " + dest.left + "///" + (realY+scrollsY))
-    if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
+    if ((wrong == 3)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
 
@@ -214,7 +261,7 @@ function dragElement(elmnt,index) {
           elmnt.style.display = "none";
 
       done++;
-      if(wrong != 2)
+      if(wrong != 3)
       correct++;
 
 
@@ -266,6 +313,7 @@ function dragElement(elmnt,index) {
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
       elmnt.style.top = document.getElementById("hide").offsetTop + "px";
       elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
+      if(wrong == 3) closeDragElement();
 
     }
 

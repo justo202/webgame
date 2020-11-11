@@ -149,6 +149,12 @@ transition: 1s;
   {
     width: 400px;
     left: 70%;
+
+  }
+  #hide
+  {
+    width: 400px;
+    height: 400px;
   }
 
 }
@@ -158,6 +164,11 @@ transition: 1s;
   {
     width: 300px;
     left: 75%;
+  }
+  #hide
+  {
+    width: 300px;
+    height: 300px;
   }
   #imgheader, #findText
   {
@@ -181,6 +192,11 @@ transition: 1s;
     width:250px;
     left: 80%;
   }
+  #hide
+  {
+    width: 250px;
+    height: 250px;
+  }
   #imgheader, #findText
   {
     left: 80%;
@@ -199,6 +215,11 @@ transition: 1s;
     width:220px;
     left: 85%;
     top:35%;
+  }
+  #hide
+  {
+    width: 220px;
+    height: 220px;
   }
   #imgheader, #findText
   {
@@ -235,19 +256,29 @@ transition: 1s;
 }
 @media only screen and (max-width: 1028px) {
 
+  .map-parent
+  {
+    width: 850px;
+
+  }
   .map
   {
-    background-image: url("img/1200+px-smaller.png");
-
+    left: -150px;
   }
   .church-img
   {
 
-    left:65%;
+    left:85%;
   }
   #imgheader
   {
-    top:calc(30% + 150px);
+    top:calc(35% + 240px);
+    left: 85%;
+  }
+  #findText
+  {
+    top: 15%;
+    left: 85%;
   }
   #main-img
   {
