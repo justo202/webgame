@@ -7,7 +7,7 @@ var zoombtn = document.getElementById("zoom-icon");
 
 let pos = { top: 0, left: 0, x: 0, y: 0 };
 const mouseDownHandler = function(e) {
-  
+
   if(!imgmove)
   {
 
@@ -201,7 +201,6 @@ function zoomOutIcons()
 
 zoombtn.onclick = function(e)
 {
-  alert("yes");
 if(!zoomed)
 {
 

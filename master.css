@@ -24,11 +24,13 @@ body
 {
   height: 905px;
   width: 1000px;
-  padding-right: 5px;
+
   overflow-y: hidden;
   overflow-x: hidden;
   border: 2px solid gray;
  border-radius: 5px;
+   margin-left: 10px;
+   margin-top: 5px;
 }
 .map
 {
@@ -52,7 +54,7 @@ transition: 1s;
 {
   font-size: 35px;
   position:absolute;
-  z-index: 99999;
+  z-index: 333;
   left:950px;
   top:30px;
   transition: 0.5s;
@@ -65,15 +67,7 @@ transition: 1s;
   font-size: 40px;
   cursor: pointer;
 }
-/*TO ZOOM INCREASE DIV HEIG AND BACKGROUND SIZE */
-.rowcustom {
 
-  padding-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-
-
-}
 #imgheader
 {
   display: block;
@@ -304,5 +298,40 @@ transition: 1s;
   #zoom-icon
   {
     left:800px;
+  }
+}
+@media only screen and (max-width: 922px) {
+
+  .map-parent
+  {
+    width: 910px;
+    margin-top: 250px;
+    margin-left: 0px;
+
+  }
+  .map
+  {
+    left: -90px;
+  }
+  #zoom-icon
+  {
+    left:850px;
+    top: 280px;
+  }
+  .church-img
+  {
+    top:20px;
+    left:20px;
+  }
+  #findText
+  {
+    top:35px;
+    left:255px; /*20+img width */
+    width: 450px;
+  }
+  #imgheader
+  {
+    left:255px;
+    top:140px
   }
 }

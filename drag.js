@@ -159,7 +159,7 @@ function dragElement(elmnt,index) {
 
   function elementDrag(e) {
     e = e || window.event;
-    e.preventDefault();
+    
 
       if(e.type == 'touchevent' || e.type == 'touchmove')
     {
