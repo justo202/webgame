@@ -91,12 +91,6 @@ function dragElement(elmnt,index) {
   var wrong = 0;
 
 
-
-
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
       // otherwise, move the DIV from anywhere inside the DIV:
       startposx = elmnt.offsetLeft; //get the position of an element
       startposy = elmnt.offsetTop;
@@ -104,13 +98,13 @@ function dragElement(elmnt,index) {
       elmnt.onmousedown = dragMouseDown;
       elmnt.ontouchstart = dragMouseDown;
 
-  }
   function reduceSize(element)
   {
     element.style.width = "45px";
     element.style.height = "auto";
   }
   function dragMouseDown(e) {
+      e.preventDefault();
     if(move)
     {
 
@@ -223,7 +217,7 @@ function dragElement(elmnt,index) {
     // stop moving when mouse button is released:
   //var coordinates = elmnt.getBoundingClientRect();
 
-  if(event.type == 'touchend' || event.type == 'touchmove')
+  if(event.type == 'touchend')
 {
 
   var evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
@@ -318,7 +312,9 @@ else {
     }
 
     document.onmouseup = null;
+    document.ontouchend = null;
     document.onmousemove = null;
+    document.ontouchmove = null;
   }
 
 }

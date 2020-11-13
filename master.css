@@ -48,6 +48,23 @@ transition: 1s;
   -webkit-user-select: none;
 
 }
+#zoom-icon
+{
+  font-size: 35px;
+  position:absolute;
+  z-index: 99999;
+  left:950px;
+  top:30px;
+  transition: 0.5s;
+
+
+}
+
+#zoom-icon:hover
+{
+  font-size: 40px;
+  cursor: pointer;
+}
 /*TO ZOOM INCREASE DIV HEIG AND BACKGROUND SIZE */
 .rowcustom {
 
@@ -283,5 +300,9 @@ transition: 1s;
   #main-img
   {
     width: 400px !important;
+  }
+  #zoom-icon
+  {
+    left:800px;
   }
 }

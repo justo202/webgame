@@ -2,46 +2,81 @@
 var map = document.getElementById("map-id");
 var parent = document.getElementById("map-parent");
 var destination = document.getElementsByClassName("destination");
-
+var zoombtn = document.getElementById("zoom-icon");
 
 
 let pos = { top: 0, left: 0, x: 0, y: 0 };
 const mouseDownHandler = function(e) {
-
+  
   if(!imgmove)
   {
 
     parent.style.cursor = 'grabbing';
     parent.style.userSelect = 'none';
-      pos = {
-          // The current scroll
-          left: parent.scrollLeft,
-          top: parent.scrollTop,
-          // Get the current mouse position
-          x: e.pageX,
-          y: e.pageY,
-      };
+      if(e.type == 'touchstart' || e.type == 'touchmove') //if on mobile determine the touch position
+      {
+        var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+        var touch = evt.touches[0] || evt.changedTouches[0];
+        pos = {
+            // The current scroll
+            left: parent.scrollLeft,
+            top: parent.scrollTop,
+            // Get the current mouse position
+            x: touch.pageX,
+            y: touch.pageY,
+        };
+      }
+      else {
+
+        pos = {
+            // The current scroll
+            left: parent.scrollLeft,
+            top: parent.scrollTop,
+            // Get the current mouse position
+            x: e.pageX,
+            y: e.pageY,
+        };
+      }
+
 
       parent.addEventListener('mousemove', mouseMoveHandler);
+      parent.addEventListener('touchmove', mouseMoveHandler); //for mobiles
       parent.addEventListener('mouseup', mouseUpHandler);
+      parent.addEventListener('touchend', mouseUpHandler); //for mobiles
   }
 };
 const mouseMoveHandler = function(e) {
     // How far the mouse has been moved
+    e.preventDefault();
+    if(e.type == 'touchstart' || e.type == 'touchmove')
+    {
+      var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+      var touch = evt.touches[0] || evt.changedTouches[0];
+      var dx = touch.pageX - pos.x;
+      var dy = touch.pageY - pos.y;
 
-    const dx = e.pageX - pos.x;
-    const dy = e.pageY - pos.y;
+    }
+    else {
+
+      var dx = e.pageX - pos.x;
+      var dy = e.pageY - pos.y;
+    }
+
     // Scroll the element
     parent.scrollTop = pos.top - dy;
     parent.scrollLeft = pos.left - dx;
+
+
 
 };
 const mouseUpHandler = function() {
     parent.style.cursor = 'grab';
     parent.style.removeProperty('user-select');
 
-    parent.removeEventListener('mousemove', mouseMoveHandler);
+  parent.removeEventListener('mousemove', mouseMoveHandler);
+  parent.removeEventListener('touchmove', mouseMoveHandler); //for mobiles
   parent.removeEventListener('mouseup', mouseUpHandler);
+  parent.removeEventListener('touchend', mouseUpHandler); //for mobi;es
 };
 
 
@@ -164,8 +199,9 @@ function zoomOutIcons()
 }
 
 
-map.ondblclick = function(e)
+zoombtn.onclick = function(e)
 {
+  alert("yes");
 if(!zoomed)
 {
 
@@ -176,22 +212,25 @@ if(!zoomed)
   map.style.width = "1520px";
   map.style.height = "1320px";
   zoomIcons();
-  document.getElementById("zoom-text").innerHTML = " Spustelkite 2 kartus atitolinti vaizdą";
 
-
+  zoombtn.classList.remove('fa-search-plus');
+  zoombtn.classList.add('fa-search-minus');
    parent.addEventListener('mousedown', mouseDownHandler);
-
+   parent.addEventListener('touchstart', mouseDownHandler); //for phones
   zoomed = true;
+
 }
 else {
-document.getElementById("zoom-text").innerHTML = " Spustelkite 2 kartus priartinti vaizdą";
+
   map.style.width = "1000px";
   map.style.height = "905px";
   map.style.backgroundSize = "1000px 950px";
   zoomOutIcons();
+  zoombtn.classList.remove('fa-search-minus');
+  zoombtn.classList.add('fa-search-plus');
   zoomed = false;
   parent.style.cursor = 'initial';
   parent.removeEventListener('mousedown', mouseDownHandler);
+  parent.removeEventListener('touchstart', mouseDownHandler); //for phones
 }
-
 }
