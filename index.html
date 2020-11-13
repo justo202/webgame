@@ -9,20 +9,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
      <link rel="stylesheet" href="master.css">
     <title>Game</title>
-
+<script src="https://kit.fontawesome.com/50ae2c7fde.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="top align-middle" id = "top">
-        <div  class="container">
-          <img src="img/4.png" class="mx-auto text-center" id = "main-img" alt="..." style = "margin-top: 40px;width: 400px; height:auto;opacity:1; display:block">
-            <h1 class = "mx-auto text-center" style = "display:block;width:500px;opacity:1; color: white;">Kur pažvelgsi - vien bokštai.
-               Ar žinojai, kad beveik visos Vilnių puošiančios senosios bažnyčios kažkada priklausė vienuolynams?</h1>
-            <button onclick = "document.getElementById('top').style.display = 'none';"type="button" class="btn btn-dark mx-auto" style = "width: 500px; display: block; font-size:25px">Sudėliok jas miesto žemėlapyje</button>
-        </div>
 
 
     </div>
-
+    <div id = "intro-cont" class="container-fluid" style = "top: 40px; position:absolute;z-index:1001">
+      <img src="img/4.png" class="mx-auto" id = "main-img" alt="..." style = "width: 400px; height:auto;opacity:1; display:block">
+        <h1 class = "mx-auto text-center" style = "display:block;width:500px;opacity:1; color: white;">Kur pažvelgsi - vien bokštai.
+           Ar žinojai, kad beveik visos Vilnių puošiančios senosios bažnyčios kažkada priklausė vienuolynams?</h1>
+        <button onclick = "document.getElementById('top').style.display = 'none'; document.getElementById('intro-cont').style.display = 'none';"type="button" class="btn btn-dark mx-auto" style = "width: 500px; display: block; font-size:25px">Sudėliok jas miesto žemėlapyje</button>
+    </div>
 
     <div class="top align-middle" id = "top-end" style = "display: none;">
         <div  class="container">
@@ -38,6 +37,8 @@
 
     <div class="rowcustom">
       <div id = "map-parent" class="map-parent">
+        <i id = "zoom-icon" class="fas fa-search-plus"></i>
+
 
 <!--465 -->
       <div id = "map-id" class="map">
@@ -93,12 +94,14 @@
       <img data-toggle="modal"src="img/21.png"  class="church-img dragme" id="draggable" alt="21">
       <img data-toggle="modal"src="img/22.png"  class="church-img dragme" id="draggable" alt="22">
       <img data-toggle="modal"src="img/23.png"  class="church-img dragme" id="draggable" alt="23">
-      <img data-toggle="modal"src="img/23.png"  class="church-img dragme" id="hide" alt="hide">
+      <div  class="church-img dragme" id="hide" alt="hide"> </div>
       </span>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div style = "-moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;"class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -125,9 +128,6 @@
     </script>
 
     <script src = "zoom.js">
-
-    </script>
-    <script src = "query.js">
 
     </script>
     <script src="drag.js">

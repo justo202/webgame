@@ -91,43 +91,55 @@ function dragElement(elmnt,index) {
   var wrong = 0;
 
 
-
-
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
       // otherwise, move the DIV from anywhere inside the DIV:
       startposx = elmnt.offsetLeft; //get the position of an element
       startposy = elmnt.offsetTop;
 
       elmnt.onmousedown = dragMouseDown;
+      elmnt.ontouchstart = dragMouseDown;
 
-  }
   function reduceSize(element)
   {
     element.style.width = "45px";
     element.style.height = "auto";
   }
   function dragMouseDown(e) {
+      e.preventDefault();
     if(move)
     {
+
       imgmove = true;
       e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
 
+      if(e.type == 'touchstart' || e.type == 'touchmove')
+    {
+
+      var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+      var touch = evt.touches[0] || evt.changedTouches[0];
+      pos3 = touch.pageX;
+      pos4 = touch.pageY;
+
+    }
+    else {
+
       pos3 = e.pageX;
       pos4 = e.pageY;
+
+    }
+
       originalHeight = elmnt.style.height;
       originalWidth = elmnt.style.width;
       reduceSize(elmnt); //reduces images size
       elmnt.style.top = (pos4-elmnt.height/2) + "px"; //centers the image
       elmnt.style.left = (pos3-elmnt.width/2) + "px";
       document.onmouseup = closeDragElement;
+      document.ontouchend = closeDragElement;
       // cll a function whenever the cursor moves:
 
       document.onmousemove = elementDrag;
+      document.ontouchmove = elementDrag;
 
     }
     else
@@ -147,14 +159,29 @@ function dragElement(elmnt,index) {
 
   function elementDrag(e) {
     e = e || window.event;
-    e.preventDefault();
+    
 
+      if(e.type == 'touchevent' || e.type == 'touchmove')
+    {
 
-    // calculate the new cursor position:
+      var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+      var touch = evt.touches[0] || evt.changedTouches[0];
+
+      pos1 = pos3 - touch.pageX;
+      pos2 = pos4 - touch.pageY;
+      pos3 = touch.pageX;
+      pos4 = touch.pageY;
+    }
+    else {
+
       pos1 = pos3 - e.pageX;
       pos2 = pos4 - e.pageY;
       pos3 = e.pageX;
       pos4 = e.pageY;
+
+    }
+    // calculate the new cursor position:
+
 
 
     // set the element's new position:
@@ -189,18 +216,31 @@ function dragElement(elmnt,index) {
   function closeDragElement() {
     // stop moving when mouse button is released:
   //var coordinates = elmnt.getBoundingClientRect();
-    var realX = event.pageX - map.offsetLeft;
-    var realY = event.pageY - map.offsetTop;
+
+  if(event.type == 'touchend')
+{
+
+  var evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
+  var touch = evt.touches[0] || evt.changedTouches[0];
+
+  var realX = touch.clientX - map.offsetLeft;
+  var realY = touch.clientY - map.offsetTop;
+
+}
+else {
+
+  var realX = event.clientX - map.offsetLeft;
+  var realY = event.clientY - map.offsetTop;
+
+}
 
     var dest = imagedetails[index].destination.getBoundingClientRect()
 
-
   //  alert(dest.top + " " + dest.left + "///" + (realY+scrollsY))
-    if ((wrong == 2)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
+    if ((wrong == 3)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
-      if(wrong == 2)
-      alert("Išnaudojote tris bandymus!");
+
       if(zoomed) //determines the animation based on if the map is zoomed or not
       {
         destination[index].style.animation = "imgPlacedZoomed 2s 1";
@@ -215,7 +255,7 @@ function dragElement(elmnt,index) {
           elmnt.style.display = "none";
 
       done++;
-      if(wrong != 2)
+      if(wrong != 3)
       correct++;
 
 
@@ -228,7 +268,7 @@ function dragElement(elmnt,index) {
           random = Math.floor(Math.random() * 23);
 
         }
-        document.getElementById("findText").innerHTML = "Rask šią bažnyčią";
+        document.getElementById("findText").innerHTML = "RASK ŠIĄ BAŽNYČIĄ! TURI 3 BANDYMUS";
 
         dragElement(images[random],random);
       }
@@ -267,11 +307,14 @@ function dragElement(elmnt,index) {
       elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
       elmnt.style.top = document.getElementById("hide").offsetTop + "px";
       elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
+      if(wrong == 3) closeDragElement();
 
     }
 
     document.onmouseup = null;
+    document.ontouchend = null;
     document.onmousemove = null;
+    document.ontouchmove = null;
   }
 
 }
