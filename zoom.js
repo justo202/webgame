@@ -84,13 +84,27 @@ const mouseUpHandler = function() {
 function zoomIcons()
 {
 
-
-  for(var i = 0; i < destination.length;i++)
+  if( window.matchMedia("(max-width: 922px)").matches)
   {
-    destination[i].style.width = "50px";
-    destination[i].style.height = "50px";
+
+    for(var i = 0; i < destination.length;i++)
+    {
+      destination[i].style.width = "60px";
+      destination[i].style.height = "60px";
+    }
+
 
   }
+  else {
+    for(var i = 0; i < destination.length;i++)
+    {
+      destination[i].style.width = "50px";
+      destination[i].style.height = "50px";
+
+    }
+
+  }
+
 
   destination[0].style.top = "450px";//1
   destination[0].style.left = "1360px";
@@ -141,11 +155,27 @@ function zoomIcons()
 }
 function zoomOutIcons()
 {
-  for(var i = 0; i < destination.length;i++)
+
+  if( window.matchMedia("(max-width: 922px)").matches)
   {
-    destination[i].style.width = "35px";
-    destination[i].style.height = "35px";
+
+    for(var i = 0; i < destination.length;i++)
+    {
+      destination[i].style.width = "40px";
+      destination[i].style.height = "40px";
+    }
+
+
   }
+  else {
+    for(var i = 0; i < destination.length;i++)
+    {
+      destination[i].style.width = "35px";
+      destination[i].style.height = "35px";
+    }
+
+  }
+
 
   destination[0].style.top = "320px";//1
   destination[0].style.left = "895px";
@@ -217,6 +247,8 @@ if(!zoomed)
    parent.addEventListener('mousedown', mouseDownHandler);
    parent.addEventListener('touchstart', mouseDownHandler); //for phones
   zoomed = true;
+
+
 
 }
 else {

@@ -334,4 +334,9 @@ transition: 1s;
     left:255px;
     top:140px
   }
+  .destination
+  {
+    width: 40px;
+    height: 40px;
+  }
 }
