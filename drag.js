@@ -128,8 +128,6 @@ function dragElement(elmnt,index) {
   {
     elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
     elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
-    elmnt.style.top = document.getElementById("hide").offsetTop + "px";
-    elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
 
   };
   document.getElementById("imgheader").onclick = function()
@@ -137,6 +135,8 @@ function dragElement(elmnt,index) {
     var imgNumb = index + 1;
     document.getElementById("modalTitle").innerHTML = imagedetails[index].name;
     document.getElementById("modalImg").src = "img/" + imgNumb + ".png";
+    document.getElementById("desc1").innerHTML = imagedetails[index].imgdesc1;
+    document.getElementById("desc2").innerHTML = imagedetails[index].imgdesc2;
 
   };
   elmnt.style.visibility = "visible"; //makes element vissible
