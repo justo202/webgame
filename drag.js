@@ -129,6 +129,8 @@ function dragElement(elmnt,index) {
     elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
     elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
 
+    elmnt.style.top = document.getElementById("hide").offsetTop + "px";
+    elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
   };
   document.getElementById("imgheader").onclick = function()
   {
@@ -263,10 +265,27 @@ function dragElement(elmnt,index) {
       if ((y > (dest.top-map.offsetTop)) && (y < (dest.bottom-map.offsetTop)) && (x > (dest.left-map.offsetLeft)) && (x < (dest.right- map.offsetLeft)))
       {
         wrong++;
-        document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi: " + imagedetails[l].name;
-        document.getElementById("findText").style.animation = "incorect 2s 1";
+        document.getElementById("failed").style.display = "flex";
+        document.getElementById("church-id").innerHTML = "Čia stovi " + imagedetails[l].name;
+        if( window.matchMedia("(max-width: 1238px)").matches)
+        {
+          document.getElementById("church-id").style.animation = "incorect-small 1s 1";
+          document.getElementById("neteisingai").style.animation = "incorect-small 1s 1";
 
-        var elm = document.getElementById("findText");
+
+        }
+        else {
+
+          document.getElementById("church-id").style.animation = "incorect 2s 1";
+          document.getElementById("neteisingai").style.animation = "incorect 2s 1";
+        }
+
+
+
+        var elm = document.getElementById("neteisingai");
+        var newone = elm.cloneNode(true);
+        elm.parentNode.replaceChild(newone, elm);
+        var elm = document.getElementById("church-id");
         var newone = elm.cloneNode(true);
         elm.parentNode.replaceChild(newone, elm);
       }
@@ -300,7 +319,7 @@ else {
     if ((wrong == 3)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
-
+      document.getElementById("failed").style.display = "none";
       if(zoomed) //determines the animation based on if the map is zoomed or not
       {
         destination[index].style.animation = "imgPlacedZoomed 2s 1";
@@ -328,7 +347,7 @@ else {
           random = Math.floor(Math.random() * 23);
 
         }
-        document.getElementById("findText").innerHTML = "RASK ŠIĄ BAŽNYČIĄ! TURI 3 BANDYMUS";
+        document.getElementById("findText").innerHTML = "Rask šią bažnyčią! Turi tris bandymus";
 
         dragElement(images[random],random);
       }
@@ -341,18 +360,18 @@ else {
         }
         else if(correct == 1 || correct == 21)
         {
-            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčią";
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai! Tau pavyko rasti " + correct + " bažnyčią";
         }
         else if(correct < 10)
         {
-            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+            document.getElementById("end-text").innerHTML = "Neblogai padirbėjai! Tau pavyko rasti " + correct + " bažnyčias."
         }
         else if (correct < 21){
-          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčių."
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai! Tau pavyko rasti " + correct + " bažnyčių."
         }
         else
         {
-          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai. Tau pavyko rasti " + correct + " bažnyčias."
+          document.getElementById("end-text").innerHTML = "Neblogai padirbėjai! Tau pavyko rasti " + correct + " bažnyčias."
         }
 
 
