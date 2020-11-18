@@ -265,11 +265,27 @@ function dragElement(elmnt,index) {
       if ((y > (dest.top-map.offsetTop)) && (y < (dest.bottom-map.offsetTop)) && (x > (dest.left-map.offsetLeft)) && (x < (dest.right- map.offsetLeft)))
       {
         wrong++;
-        document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi " + imagedetails[l].name;
+        document.getElementById("failed").style.display = "flex";
+        document.getElementById("church-id").innerHTML = "Čia stovi " + imagedetails[l].name;
+        if( window.matchMedia("(max-width: 1238px)").matches)
+        {
+          document.getElementById("church-id").style.animation = "incorect-small 2s 1";
+          document.getElementById("neteisingai").style.animation = "incorect-small 2s 1";
         
-        document.getElementById("findText").style.animation = "incorect 2s 1";
 
-        var elm = document.getElementById("findText");
+        }
+        else {
+
+          document.getElementById("church-id").style.animation = "incorect 2s 1";
+          document.getElementById("neteisingai").style.animation = "incorect 2s 1";
+        }
+
+
+
+        var elm = document.getElementById("neteisingai");
+        var newone = elm.cloneNode(true);
+        elm.parentNode.replaceChild(newone, elm);
+        var elm = document.getElementById("church-id");
         var newone = elm.cloneNode(true);
         elm.parentNode.replaceChild(newone, elm);
       }
