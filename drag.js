@@ -269,9 +269,9 @@ function dragElement(elmnt,index) {
         document.getElementById("church-id").innerHTML = "Čia stovi " + imagedetails[l].name;
         if( window.matchMedia("(max-width: 1238px)").matches)
         {
-          document.getElementById("church-id").style.animation = "incorect-small 2s 1";
-          document.getElementById("neteisingai").style.animation = "incorect-small 2s 1";
-        
+          document.getElementById("church-id").style.animation = "incorect-small 1s 1";
+          document.getElementById("neteisingai").style.animation = "incorect-small 1s 1";
+
 
         }
         else {
@@ -319,7 +319,7 @@ else {
     if ((wrong == 3)||((realY > (dest.top-map.offsetTop)) && (realY < (dest.bottom-map.offsetTop)) && (realX > (dest.left-map.offsetLeft)) && (realX < (dest.right- map.offsetLeft))))
     {
 
-
+      document.getElementById("failed").style.display = "none";
       if(zoomed) //determines the animation based on if the map is zoomed or not
       {
         destination[index].style.animation = "imgPlacedZoomed 2s 1";
@@ -338,7 +338,7 @@ else {
       correct++;
 
 
-      if(done < 23)
+      if(done < 2)
       {
 
         var random = Math.floor(Math.random() * 23);
