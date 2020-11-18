@@ -129,6 +129,8 @@ function dragElement(elmnt,index) {
     elmnt.style.width = document.getElementById("hide").offsetWidth+ "px"; //returns to original size
     elmnt.style.height = document.getElementById("hide").offsetHeight + "px";
 
+    elmnt.style.top = document.getElementById("hide").offsetTop + "px";
+    elmnt.style.left = document.getElementById("hide").offsetLeft + "px";
   };
   document.getElementById("imgheader").onclick = function()
   {
@@ -264,6 +266,7 @@ function dragElement(elmnt,index) {
       {
         wrong++;
         document.getElementById("findText").innerHTML = "Neteisingai! Čia stovi " + imagedetails[l].name;
+        
         document.getElementById("findText").style.animation = "incorect 2s 1";
 
         var elm = document.getElementById("findText");
