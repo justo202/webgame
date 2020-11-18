@@ -338,7 +338,7 @@ else {
       correct++;
 
 
-      if(done < 2)
+      if(done < 23)
       {
 
         var random = Math.floor(Math.random() * 23);
