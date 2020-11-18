@@ -1,7 +1,7 @@
 body
 {
   background-color: #7FE57F;
-  margin: 0;
+
   height: 100%;
 }
 
@@ -24,13 +24,13 @@ body
 {
   height: 905px;
   width: 1000px;
-
+  display: absolute;
   overflow-y: hidden;
   overflow-x: hidden;
   border: 2px solid gray;
  border-radius: 5px;
    margin-left: 10px;
-   margin-top: 5px;
+  margin-top: 5px;
 }
 .map
 {
@@ -110,7 +110,7 @@ transition: 1s;
 
   max-width: 500px; /*actual image width*/
   height: auto;
-  margin: auto; /*optional centering of image*/
+
   cursor: move;
   position: absolute;
   border-radius: 5px;
@@ -120,7 +120,7 @@ transition: 1s;
 #hide
 {
   visibility: visible;
-  border: 1px solid gray;
+  background-color: #7a7a7a;
 
   width: 500px;
   height: 500px;
@@ -130,7 +130,7 @@ transition: 1s;
 
 
 
-.destination
+.destination, .destination-arrow
 {
 position: absolute;
 width: 35px;
@@ -180,6 +180,7 @@ transition: 1s;
   {
     width: 300px;
     height: 300px;
+    left:75%;
   }
   #imgheader, #findText
   {
@@ -207,6 +208,7 @@ transition: 1s;
   {
     width: 250px;
     height: 250px;
+    left:80%;
   }
   #imgheader, #findText
   {
@@ -221,21 +223,26 @@ transition: 1s;
 }
 @media only screen and (max-width: 1238px) { /*neveikia kazkodel*/
 
+
   .church-img
   {
     width:220px;
-    left: 85%;
+    left:auto;
+    right: 2px;
     top:35%;
   }
   #hide
   {
     width: 220px;
     height: 220px;
+    left:auto;
+    right: 2px;
   }
   #imgheader, #findText
   {
     top: 22%;
-    left: 85%;
+    left:auto;
+    right: 2px;
     width:220px;
     font-size: 1.5rem;
   }
@@ -245,18 +252,26 @@ transition: 1s;
 
     top:calc(35% + 240px);
   }
+  #intro-cont
+  {
 
+    top:40px !important;
+  }
 }
 @media only screen and (max-width: 1172px) { /*neveikia kazkodel*/
 
   .church-img
   {
-    left: 95%;
+    right: 0px;
 
+  }
+  #hide
+  {
+    right: 0px;
   }
   #imgheader, #findText
   {
-    left: 95%;
+    right: 0px;
 
   }
   #findText
@@ -269,74 +284,109 @@ transition: 1s;
 
   .map-parent
   {
-    width: 850px;
+    width: 760px;
 
   }
   .map
   {
-    left: -150px;
+    left: -240px;
   }
   .church-img
   {
-
-    left:85%;
+    width: 220px;
+    right:0px;
   }
   #imgheader
   {
+      width: 220px;
     top:calc(35% + 240px);
-    left: 85%;
+      right:0px;
   }
   #findText
   {
+      width: 220px;
     top: 15%;
-    left: 85%;
+      right:0px;
   }
   #main-img
   {
-    width: 400px !important;
+    width: 500px !important;
   }
   #zoom-icon
   {
-    left:800px;
+    left:710px;
   }
 }
 @media only screen and (max-width: 922px) {
 
   .map-parent
   {
-    width: 910px;
+
     margin-top: 250px;
     margin-left: 0px;
 
   }
-  .map
-  {
-    left: -90px;
-  }
+
   #zoom-icon
   {
-    left:850px;
+
     top: 280px;
   }
   .church-img
   {
+    right: auto;
+    top:20px;
+    left:20px;
+  }
+  #hide
+  {
+    right: auto;
     top:20px;
     left:20px;
   }
   #findText
   {
+    right: auto;
     top:35px;
     left:255px; /*20+img width */
     width: 450px;
   }
   #imgheader
   {
+    right: auto;
     left:255px;
-    top:140px
+    top:185px;
+    width: auto;
+    height: 55px;
+    font-size: 1rem;
   }
   .destination
   {
     width: 40px;
     height: 40px;
+  }
+
+}
+@media only screen and (max-width: 540px) {
+  .map-parent
+  {
+    width: 700px;
+  }
+  .map
+  {
+    left: -300px;
+  }
+  #zoom-icon
+  {
+    left:650px;
+    top: 280px;
+  }
+}@media only screen and (max-width: 557px) {
+
+  #intro-cont
+  {
+    left:20% !important;
+
+
   }
 }

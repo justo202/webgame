@@ -12,16 +12,21 @@
 <script src="https://kit.fontawesome.com/50ae2c7fde.js" crossorigin="anonymous"></script>
   </head>
   <body>
+
     <div class="top align-middle" id = "top">
 
+    </div>
+    <div id = "intro-cont" class = "container-fluid" style = "left:0;right:0;bottom:0;top:40px;position:absolute;z-index:1001">
 
-    </div>
-    <div id = "intro-cont" class="container-fluid" style = "top: 40px; position:absolute;z-index:1001">
-      <img src="img/4.png" class="mx-auto" id = "main-img" alt="..." style = "width: 400px; height:auto;opacity:1; display:block">
-        <h1 class = "mx-auto text-center" style = "display:block;width:500px;opacity:1; color: white;">Kur pažvelgsi - vien bokštai.
-           Ar žinojai, kad beveik visos Vilnių puošiančios senosios bažnyčios kažkada priklausė vienuolynams?</h1>
-        <button onclick = "document.getElementById('top').style.display = 'none'; document.getElementById('intro-cont').style.display = 'none';"type="button" class="btn btn-dark mx-auto" style = "width: 500px; display: block; font-size:25px">Sudėliok jas miesto žemėlapyje</button>
-    </div>
+      <div class="contents" style = "position:relative;">
+        <img src="img/4.png" class="mx-auto" id = "main-img" alt="..." style = "width: 400px; height:auto;opacity:1; display:block">
+          <h1 class = "mx-auto text-center" style = "display:block;width:500px;opacity:1; color: white;">Kur pažvelgsi – vien bokštai.
+             Ar žinojai, kad beveik visos Vilnių puošiančios senosios bažnyčios kažkada priklausė vienuolynams?</h1>
+          <button onclick = "document.getElementById('top').style.display = 'none'; document.getElementById('intro-cont').style.display = 'none';"type="button" class="btn btn-dark mx-auto" style = "width: 500px; display: block; font-size:25px">Sudėliok jas miesto žemėlapyje</button>
+      </div>
+      </div>
+
+
 
     <div class="top align-middle" id = "top-end" style = "display: none;">
         <div  class="container">
@@ -60,15 +65,18 @@
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:690px;top:700px"src="img/mag16-removebg-preview.png" alt="16">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:650px;top:790px"src="img/mag17-removebg-preview.png" alt="17">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:830px;top:15px"src="img/mag18-removebg-preview.png" alt="18">
+        <img class = "destination-arrow" id = "arrow18" src="img/arrow.png" alt="arrow" style = "left:860px;top: 15px;">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:825px;top:645px"src="img/mag19-removebg-preview.png" alt="19">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:605px;top:15px"src="img/mag20-removebg-preview.png" alt="20">
+        <img class = "destination-arrow" id = "arrow20" src="img/arrow.png" alt="arrow" style = "left:635px;top: 15px;">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:765px;top:760px"src="img/mag21-removebg-preview.png" alt="21">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:620px;top:570px"src="img/mag22-removebg-preview.png" alt="22">
         <img class = "destination" data-toggle="modal" data-target="#modal" style = "left:600px;top:778px"src="img/mag23-removebg-preview.png" alt="23">
+
       </div>
   </div>
       <button id = "imgheader"  data-toggle="modal" data-target="#modal" type="button" class="btn btn-dark mx-auto" >SUŽINOK DAUGIAU</button>
-      <h3 id = "findText">RASK ŠIĄ BAŽNYČIĄ! TURI 3 BANDYMUS</h3>
+      <h3 id = "findText">Rask šią bažnyčią! Turi tris bandymus</h3>
       <span class="img-flex">
 
       <img data-toggle="modal"src="img/1.png"  class="church-img dragme" id="draggable" alt="1">
