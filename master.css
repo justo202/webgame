@@ -144,9 +144,10 @@ transition: 1s;
   transition: 1s;
   width: 500px;
   height: 500px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   cursor: pointer;
+
 
 }
 #failed h2
@@ -205,6 +206,11 @@ transition: 1s;
     width: 300px;
     height: 300px;
     left:75%;
+  }
+  #failed
+  {
+
+    padding: 10px 5px;
   }
   #failed h2
   {
@@ -328,7 +334,7 @@ transition: 1s;
   }
   #main-img
   {
-    width: 500px !important;
+    width: 400px !important;
   }
   #zoom-icon
   {
@@ -351,9 +357,9 @@ transition: 1s;
   }
   #findText
   {
-      width: 220px;
+    width: 220px;
     top: 20%;
-      right:0px;
+    right:0px;
   }
 
 }
@@ -389,7 +395,7 @@ transition: 1s;
     right: auto;
     top:35px;
     left:255px; /*20+img width */
-    width: 450px;
+    width: 210px;
 
   }
   #imgheader
@@ -422,12 +428,24 @@ transition: 1s;
     left:650px;
     top: 280px;
   }
-}@media only screen and (max-width: 557px) {
+}@media only screen and (max-width: 657px) {
 
   #intro-cont
   {
     left:20% !important;
 
 
+  }
+}
+@media only screen and (max-height: 732px) {
+
+  #main-img
+  {
+    width: 250px !important;
+  }
+  #main-text
+  {
+    font-size: 30px !important;
+    width: 300px !important;
   }
 }
